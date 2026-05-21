@@ -1,5 +1,5 @@
 ---
-import { FOCUS_AREAS } from "../lib/event";
+import { FOCUS_AREAS, FORM_ENDPOINT } from "../lib/event";
 ---
 <section
   id="acceso"
@@ -31,9 +31,8 @@ import { FOCUS_AREAS } from "../lib/event";
       class="form-wrap fade-up w-full"
       data-d="3"
       id="qarybe-form"
-      action="#"
-      method="post"
-      novalidate
+      action={FORM_ENDPOINT || "#"}
+      method="POST"
     >
       <div class="form-row">
         <input type="text" name="nombre"   placeholder="Nombre"   required autocomplete="given-name" />
@@ -41,12 +40,12 @@ import { FOCUS_AREAS } from "../lib/event";
       </div>
       <input type="email" name="email" placeholder="Correo electrónico" required autocomplete="email" />
       <div class="form-row">
-        <input type="text" name="cargo"   placeholder="Cargo / Posición" required />
-        <input type="text" name="empresa" placeholder="Empresa"          required autocomplete="organization" />
+        <input type="text" name="cargo"   placeholder="Cargo o posición"        required />
+        <input type="text" name="empresa" placeholder="Empresa u organización"  required autocomplete="organization" />
       </div>
       <input type="text" name="pais" placeholder="País" required autocomplete="country-name" />
-      <select name="focus" required defaultValue="">
-        <option value="" disabled selected>Área de enfoque</option>
+      <select name="area" required>
+        <option value="" disabled selected>Área de enfoque principal</option>
         {FOCUS_AREAS.map((f) => <option value={f}>{f}</option>)}
       </select>
       <button type="submit" class="form-submit" id="qarybe-submit">
@@ -54,28 +53,80 @@ import { FOCUS_AREAS } from "../lib/event";
       </button>
     </form>
 
-    <p class="microcopy fade-up" data-d="4" style="margin-top: 24px; max-width: 460px;">
+    <p class="form-feedback microcopy" id="qarybe-feedback" role="status" aria-live="polite"></p>
+
+    <p class="microcopy fade-up" data-d="4" style="margin-top: 16px; max-width: 460px;">
       La solicitud no garantiza el acceso.<br />
       Cada perfil será revisado por el equipo organizador.
     </p>
   </div>
 </section>
 
-<script is:inline>
+<style>
+  .form-feedback {
+    margin-top: 18px;
+    min-height: 14px;
+    transition: color 0.3s ease;
+  }
+  .form-feedback.ok    { color: var(--gold2); }
+  .form-feedback.error { color: #e08a6a; }
+</style>
+
+<script is:inline define:vars={{ FORM_ENDPOINT }}>
   (function () {
     const form = document.getElementById("qarybe-form");
     const btn  = document.getElementById("qarybe-submit");
+    const fb   = document.getElementById("qarybe-feedback");
     if (!form || !btn) return;
+
+    function setFeedback(msg, type) {
+      if (!fb) return;
+      fb.textContent = msg;
+      fb.classList.remove("ok", "error");
+      if (type) fb.classList.add(type);
+    }
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (btn.disabled) return;
 
-      // TODO: wire to Make / n8n endpoint
-      btn.textContent = "Solicitud enviada ✓";
+      // Demo mode — no endpoint configured yet
+      if (!FORM_ENDPOINT) {
+        btn.textContent = "Solicitud enviada ✓";
+        btn.disabled = true;
+        btn.style.opacity = "0.6";
+        btn.style.cursor = "default";
+        setFeedback("Modo demo — configura FORM_ENDPOINT para envíos reales.", "ok");
+        return;
+      }
+
+      // Live mode — submit to Formspree / API
       btn.disabled = true;
-      btn.style.opacity = "0.6";
-      btn.style.cursor = "default";
+      const original = btn.textContent;
+      btn.textContent = "Enviando...";
+      setFeedback("", null);
+
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      })
+        .then(function (res) {
+          if (res.ok) {
+            btn.textContent = "Solicitud enviada ✓";
+            btn.style.opacity = "0.6";
+            btn.style.cursor = "default";
+            form.reset();
+            setFeedback("Recibimos tu solicitud. El equipo revisará tu perfil.", "ok");
+          } else {
+            throw new Error("bad response");
+          }
+        })
+        .catch(function () {
+          btn.disabled = false;
+          btn.textContent = original;
+          setFeedback("No se pudo enviar. Intenta de nuevo o escríbenos directamente.", "error");
+        });
     });
   })();
 </script>

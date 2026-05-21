@@ -1,0 +1,88 @@
+---
+import { CREDENCIALES } from "../lib/event";
+const { title, subtitle, body, cards } = CREDENCIALES;
+---
+<section id="credenciales" class="section-pad relative" style="background: var(--navy);">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center flex flex-col items-center" style="margin-bottom: 56px;">
+      <p class="eyebrow fade-up" style="margin-bottom: 22px;">Quién organiza</p>
+
+      <h2 class="h-section fade-up" data-d="1">{title}</h2>
+
+      <p class="h-italic-gold fade-up" data-d="2" style="max-width: 620px; margin-top: 14px;">
+        {subtitle}
+      </p>
+
+      <p class="body-copy fade-up" data-d="3" style="max-width: 600px; margin-top: 26px;">
+        {body}
+      </p>
+    </div>
+
+    <div class="cred-grid">
+      {cards.map((c, i) => (
+        <article class="cred-card fade-up" data-d={String(Math.min(3, i + 1))}>
+          <span class="deco-num">{c.n}</span>
+          <span class="cred-accent" aria-hidden="true"></span>
+          <h3 class="cred-title">{c.title}</h3>
+          <p class="cred-body">{c.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .cred-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: 0.5px solid var(--border);
+  }
+  .cred-card {
+    padding: 44px 36px;
+    border-right: 0.5px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: background 0.5s ease;
+  }
+  .cred-card:last-child { border-right: none; }
+  .cred-card:hover { background: rgba(201, 168, 76, 0.045); }
+
+  .cred-accent {
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    margin: 20px 0 22px;
+    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .cred-card:hover .cred-accent { width: 56px; }
+
+  .cred-title {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.6;
+    margin: 0 0 14px 0;
+  }
+  .cred-body {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  @media (max-width: 860px) {
+    .cred-grid { grid-template-columns: 1fr; }
+    .cred-card {
+      padding: 34px 28px;
+      border-right: none;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .cred-card:last-child { border-bottom: none; }
+  }
+</style>

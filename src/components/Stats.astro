@@ -1,0 +1,79 @@
+---
+import { STATS } from "../lib/event";
+---
+<section id="contexto" class="section-pad relative" style="background: var(--navy3);">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center fade-up" style="margin-bottom: 56px;">
+      <p class="eyebrow" style="margin-bottom: 18px;">El momento</p>
+      <h2 class="h-section" style="max-width: 640px; margin: 0 auto;">
+        Los números que explican por qué esta conversación
+        <span class="h-italic-gold" style="display: inline;">ocurre ahora.</span>
+      </h2>
+    </div>
+
+    <div class="stats-grid">
+      {STATS.map((s, i) => (
+        <article class="stat fade-up" data-d={String(Math.min(3, i + 1))}>
+          <span class="stat-value">{s.value}</span>
+          <span class="stat-rule" aria-hidden="true"></span>
+          <p class="stat-body">{s.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: 0.5px solid var(--border);
+  }
+  .stat {
+    padding: 48px 40px;
+    border-right: 0.5px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: background 0.5s ease;
+  }
+  .stat:last-child { border-right: none; }
+  .stat:hover { background: rgba(201, 168, 76, 0.04); }
+
+  .stat-value {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(56px, 7vw, 92px);
+    line-height: 1;
+    color: var(--gold);
+    letter-spacing: -2px;
+  }
+  .stat-rule {
+    width: 36px;
+    height: 1px;
+    background: var(--gold);
+    margin: 22px 0;
+    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .stat:hover .stat-rule { width: 60px; }
+
+  .stat-body {
+    font-family: var(--font-sans);
+    font-size: 12.5px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  @media (max-width: 860px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .stat {
+      padding: 36px 30px;
+      border-right: none;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .stat:last-child { border-bottom: none; }
+    .stat-rule { margin: 16px 0; }
+  }
+</style>

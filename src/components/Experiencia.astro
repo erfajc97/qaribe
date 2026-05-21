@@ -9,8 +9,8 @@ const venueFeatures = [
   },
   {
     icon: "people",
-    title: "Networking real",
-    body: "Conversaciones entre pares de alto nivel.",
+    title: "Conversaciones reales",
+    body: "Un grupo selecto de líderes que comparten el mismo nivel de decisión.",
   },
   {
     icon: "spark",
@@ -87,6 +87,17 @@ const venueFeatures = [
             </div>
           </div>
         ))}
+      </div>
+
+      <!-- Todo incluido -->
+      <div class="all-inclusive fade-up" data-d="4">
+        <span class="all-inclusive-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </span>
+        <p class="all-inclusive-text">
+          <span class="ai-label">Todo incluido</span>
+          <span class="ai-body">Hospedaje, gastronomía y actividades durante los tres días en el Four Seasons Cartagena.</span>
+        </p>
       </div>
     </div>
   </div>
@@ -221,6 +232,57 @@ const venueFeatures = [
   }
   @media (max-width: 640px) {
     .venue-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Todo incluido */
+  .all-inclusive {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 720px;
+    margin: 14px auto 0;
+    padding: 20px 24px;
+    text-align: left;
+    border: 0.5px solid rgba(201, 168, 76, 0.4);
+    background: rgba(201, 168, 76, 0.05);
+  }
+  .all-inclusive-icon {
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5px solid rgba(201, 168, 76, 0.5);
+    color: var(--gold2);
+  }
+  .all-inclusive-text { margin: 0; }
+  .ai-label {
+    display: inline;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .ai-label::after {
+    content: "—";
+    margin: 0 8px;
+    color: rgba(201, 168, 76, 0.5);
+  }
+  .ai-body {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+  @media (max-width: 640px) {
+    .all-inclusive { padding: 18px 18px; gap: 14px; align-items: flex-start; }
+    .ai-label { display: block; margin-bottom: 6px; }
+    .ai-label::after { display: none; }
   }
 
   .venue-item {
