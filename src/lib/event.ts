@@ -104,14 +104,17 @@ export const FORM_ENDPOINT = "";
 
 export const STATS = [
   {
+    icon: "chip",
     value: "78%",
     body: "de ejecutivos de seguros en LatAm no tienen una estrategia clara de IA — en una industria que la IA va a reestructurar completamente en la próxima década.",
   },
   {
+    icon: "trend",
     value: "5×",
     body: "la ventaja de rendimiento de aseguradoras con IA vs. operadores tradicionales en mercados emergentes.",
   },
   {
+    icon: "diamond",
     value: "$2.4T",
     body: "valor proyectado de la IA en América Latina y el Caribe para 2035. La mayoría fluirá a organizaciones ya posicionadas hoy.",
   },
