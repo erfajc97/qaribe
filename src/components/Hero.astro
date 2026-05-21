@@ -1,25 +1,22 @@
 ---
-import FaroSvg from "./FaroSvg.astro";
 import { EVENT } from "../lib/event";
 ---
 <section
   id="top"
-  class="relative overflow-hidden"
-  style="background: var(--navy); min-height: 100vh; padding-top: 130px; padding-bottom: 80px;"
+  class="hero-section relative overflow-hidden"
 >
-  <!-- Layer 1: Cartagena bg image, atmospheric, heavily darkened + blurred -->
-  <div class="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+  <!-- Layer 1: Cartagena bg image -->
+  <div class="hero-bg" aria-hidden="true">
     <img
       src="/images/hero-bg.jpg"
       alt=""
-      class="absolute inset-0 w-full h-full object-cover hero-img-anim"
-      style="filter: brightness(0.38) saturate(0.45) contrast(1.05) blur(6px); transform: scale(1.08);"
+      class="hero-bg-img"
       loading="eager"
       fetchpriority="high"
       decoding="async"
     />
-    <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(5,14,26,0.88) 0%, rgba(5,14,26,0.82) 35%, rgba(7,17,31,0.92) 70%, rgba(5,14,26,1) 100%);"></div>
-    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.14), transparent 55%), radial-gradient(ellipse at 50% 110%, rgba(5,14,26,0.7), transparent 60%);"></div>
+    <div class="hero-bg-grad"></div>
+    <div class="hero-bg-radial"></div>
   </div>
 
   <!-- Layer 2: particles canvas -->
@@ -27,28 +24,27 @@ import { EVENT } from "../lib/event";
 
   <!-- Layer 3: content -->
   <div class="relative z-10 flex flex-col items-center text-center px-6">
-    <p class="eyebrow fade-up" style="margin-bottom: 36px;">
+    <p class="eyebrow fade-up" style="margin-bottom: 28px;">
       Por Invitación · {EVENT.year}
     </p>
 
-    <div class="fade-up faro-wrap" data-d="1" style="margin-bottom: 8px;">
-      <FaroSvg size={120} rays={true} />
+    <div class="fade-up hero-logo-wrap" data-d="1">
+      <img
+        src="/images/logo.png"
+        alt="Qarybe Summit 2026"
+        class="hero-logo"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        width="380"
+        height="430"
+      />
     </div>
-
-    <h1 class="h-display fade-up" data-d="2" style="margin-top: -6px;">{EVENT.brand}</h1>
-
-    <p
-      class="fade-up"
-      data-d="3"
-      style="font-family: var(--font-sc); font-weight: 300; font-size: clamp(14px, 1.8vw, 22px); letter-spacing: 10px; color: var(--gold); margin-top: 14px;"
-    >
-      {EVENT.brandSuffix} {EVENT.year}
-    </p>
 
     <p
       class="fade-up body-copy"
-      data-d="4"
-      style="max-width: 520px; margin-top: 36px; font-size: 14px; line-height: 1.9; color: rgba(245, 240, 232, 0.82);"
+      data-d="3"
+      style="max-width: 520px; margin-top: 26px; font-size: 14px; line-height: 1.85; color: rgba(245, 240, 232, 0.85);"
     >
       El encuentro privado que está definiendo<br class="hidden sm:inline" />
       el futuro digital de América Latina y el Caribe.
@@ -56,20 +52,50 @@ import { EVENT } from "../lib/event";
 
     <p
       class="fade-up body-copy"
-      data-d="5"
-      style="max-width: 500px; margin-top: 18px; font-size: 12.5px; line-height: 1.9;"
+      data-d="4"
+      style="max-width: 500px; margin-top: 14px; font-size: 12.5px; line-height: 1.85;"
     >
       Qarybe Summit 2026 no es una conferencia. Es la sala donde los líderes
       que están construyendo el futuro digital de la región se reúnen por
       primera vez. Por invitación. Four Seasons Cartagena. 24–26 de septiembre de 2026.
     </p>
 
-    <div class="fade-up flex flex-wrap items-center justify-center gap-4" data-d="5" style="margin-top: 40px;">
+    <!-- Countdown -->
+    <div
+      class="fade-up countdown"
+      data-d="5"
+      id="qarybe-countdown"
+      data-target="2026-09-24T08:00:00-05:00"
+      role="timer"
+      aria-live="polite"
+    >
+      <div class="cd-cell">
+        <span class="cd-num" data-cd="d">--</span>
+        <span class="cd-label">Días</span>
+      </div>
+      <div class="cd-sep" aria-hidden="true">·</div>
+      <div class="cd-cell">
+        <span class="cd-num" data-cd="h">--</span>
+        <span class="cd-label">Horas</span>
+      </div>
+      <div class="cd-sep" aria-hidden="true">·</div>
+      <div class="cd-cell">
+        <span class="cd-num" data-cd="m">--</span>
+        <span class="cd-label">Minutos</span>
+      </div>
+      <div class="cd-sep" aria-hidden="true">·</div>
+      <div class="cd-cell">
+        <span class="cd-num" data-cd="s">--</span>
+        <span class="cd-label">Segundos</span>
+      </div>
+    </div>
+
+    <div class="fade-up flex flex-wrap items-center justify-center gap-4" data-d="5" style="margin-top: 36px;">
       <a href="#acceso" class="btn-primary">Quiero mi lugar</a>
       <a href="#experiencia" class="btn-ghost">Ver la experiencia</a>
     </div>
 
-    <p class="fade-up microcopy" data-d="5" style="margin-top: 22px; max-width: 460px; color: rgba(245, 240, 232, 0.50);">
+    <p class="fade-up microcopy" data-d="5" style="margin-top: 20px; max-width: 460px; color: rgba(245, 240, 232, 0.55);">
       Acceso por invitación. Cupos limitados y sujetos a validación del perfil ejecutivo.
     </p>
   </div>
@@ -77,99 +103,219 @@ import { EVENT } from "../lib/event";
 </section>
 
 <style>
-  .faro-wrap {
-    filter: drop-shadow(0 0 32px rgba(226, 196, 122, 0.25));
+  .hero-section {
+    background: var(--navy);
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 72px;
+  }
+  @media (max-width: 768px) {
+    .hero-section { padding-top: 100px; padding-bottom: 56px; }
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .hero-bg-img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.62) saturate(0.7) contrast(1.04);
+    will-change: transform;
+    animation: hero-drift 28s ease-in-out infinite alternate;
+  }
+  @media (min-width: 769px) {
+    .hero-bg-img { filter: brightness(0.60) saturate(0.65) contrast(1.05) blur(3px); }
+  }
+  .hero-bg-grad {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg,
+      rgba(5,14,26,0.55) 0%,
+      rgba(5,14,26,0.45) 35%,
+      rgba(7,17,31,0.72) 75%,
+      rgba(5,14,26,0.96) 100%);
+  }
+  .hero-bg-radial {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 28%, rgba(201,168,76,0.18), transparent 55%),
+      radial-gradient(ellipse at 50% 110%, rgba(5,14,26,0.65), transparent 60%);
+  }
+
+  @keyframes hero-drift {
+    from { transform: scale(1.06) translate3d(0, 0, 0); }
+    to   { transform: scale(1.12) translate3d(-1.2%, -0.8%, 0); }
+  }
+
+  .hero-logo-wrap {
+    filter: drop-shadow(0 0 36px rgba(226, 196, 122, 0.28));
     animation: faro-pulse 4.5s ease-in-out infinite;
   }
   @keyframes faro-pulse {
-    0%, 100% { filter: drop-shadow(0 0 28px rgba(226, 196, 122, 0.22)); }
-    50%      { filter: drop-shadow(0 0 44px rgba(226, 196, 122, 0.42)); }
+    0%, 100% { filter: drop-shadow(0 0 30px rgba(226, 196, 122, 0.22)); }
+    50%      { filter: drop-shadow(0 0 52px rgba(226, 196, 122, 0.45)); }
+  }
+  .hero-logo {
+    display: block;
+    width: clamp(220px, 28vw, 360px);
+    height: auto;
+    margin: 0 auto;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  @media (max-width: 768px) {
+    .hero-logo { width: clamp(200px, 64vw, 280px); }
   }
 
-  .hero-img-anim {
-    animation: hero-drift 26s ease-in-out infinite alternate;
+  /* Countdown */
+  .countdown {
+    display: inline-flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 32px;
+    padding: 18px 26px;
+    border: 0.5px solid var(--border);
+    background: rgba(7, 17, 31, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
-  @keyframes hero-drift {
-    from { transform: scale(1.08) translate3d(0, 0, 0); }
-    to   { transform: scale(1.14) translate3d(-1.5%, -1%, 0); }
+  @media (max-width: 640px) {
+    .countdown {
+      gap: 6px;
+      padding: 14px 14px;
+    }
+  }
+  .cd-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+  }
+  @media (max-width: 640px) {
+    .cd-cell { min-width: 46px; }
+  }
+  .cd-num {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: -1px;
+    font-variant-numeric: tabular-nums;
+  }
+  .cd-label {
+    font-family: var(--font-sans);
+    font-size: 8px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 8px;
+  }
+  @media (max-width: 640px) {
+    .cd-label { font-size: 7px; letter-spacing: 2px; }
+  }
+  .cd-sep {
+    color: rgba(201, 168, 76, 0.35);
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1;
+    align-self: center;
+    margin-top: -8px;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .faro-wrap, .hero-img-anim { animation: none !important; }
+    .hero-logo-wrap, .hero-bg-img { animation: none !important; }
   }
 </style>
 
 <script is:inline>
   (function () {
+    // ── Particles canvas ─────────────────────────
     const canvas = document.getElementById("particles-canvas");
-    if (!canvas) return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
+    if (canvas && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const ctx = canvas.getContext("2d");
+      if (ctx) {
+        let W = 0, H = 0, pts = [], dpr = Math.min(window.devicePixelRatio || 1, 2);
+        let raf = 0;
 
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+        function init() {
+          const rect = canvas.parentElement.getBoundingClientRect();
+          W = rect.width; H = rect.height;
+          canvas.width  = W * dpr;
+          canvas.height = H * dpr;
+          canvas.style.width  = W + "px";
+          canvas.style.height = H + "px";
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    let W = 0, H = 0, pts = [], dpr = Math.min(window.devicePixelRatio || 1, 2);
-    let raf = 0;
-
-    function init() {
-      const rect = canvas.parentElement.getBoundingClientRect();
-      W = rect.width;
-      H = rect.height;
-      canvas.width  = W * dpr;
-      canvas.height = H * dpr;
-      canvas.style.width = W + "px";
-      canvas.style.height = H + "px";
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      const count = Math.min(90, Math.floor((W * H) / 16000));
-      pts = [];
-      for (let i = 0; i < count; i++) {
-        pts.push({
-          x: Math.random() * W,
-          y: Math.random() * H,
-          r: Math.random() * 1.2 + 0.25,
-          o: Math.random() * 0.35 + 0.07,
-          speed: Math.random() * 0.12 + 0.035,
-          dir: Math.random() > 0.5 ? 1 : -1,
+          const count = Math.min(90, Math.floor((W * H) / 16000));
+          pts = [];
+          for (let i = 0; i < count; i++) {
+            pts.push({
+              x: Math.random() * W,
+              y: Math.random() * H,
+              r: Math.random() * 1.2 + 0.25,
+              o: Math.random() * 0.35 + 0.07,
+              speed: Math.random() * 0.12 + 0.035,
+              dir: Math.random() > 0.5 ? 1 : -1,
+            });
+          }
+        }
+        function draw() {
+          ctx.clearRect(0, 0, W, H);
+          for (const p of pts) {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(226, 196, 122, " + p.o.toFixed(3) + ")";
+            ctx.fill();
+            p.y -= p.speed;
+            p.o += 0.0018 * p.dir;
+            if (p.o > 0.45 || p.o < 0.05) p.dir *= -1;
+            if (p.y < -4) { p.y = H + 4; p.x = Math.random() * W; }
+          }
+          raf = requestAnimationFrame(draw);
+        }
+        function start() { init(); cancelAnimationFrame(raf); draw(); }
+        start();
+        let to;
+        window.addEventListener("resize", () => { clearTimeout(to); to = setTimeout(start, 150); });
+        document.addEventListener("visibilitychange", () => {
+          if (document.hidden) cancelAnimationFrame(raf); else draw();
         });
       }
     }
 
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-      for (const p of pts) {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(226, 196, 122, " + p.o.toFixed(3) + ")";
-        ctx.fill();
-        p.y -= p.speed;
-        p.o += 0.0018 * p.dir;
-        if (p.o > 0.45 || p.o < 0.05) p.dir *= -1;
-        if (p.y < -4) {
-          p.y = H + 4;
-          p.x = Math.random() * W;
-        }
-      }
-      raf = requestAnimationFrame(draw);
+    // ── Countdown ─────────────────────────
+    const cd = document.getElementById("qarybe-countdown");
+    if (!cd) return;
+    const target = new Date(cd.getAttribute("data-target")).getTime();
+    const elD = cd.querySelector('[data-cd="d"]');
+    const elH = cd.querySelector('[data-cd="h"]');
+    const elM = cd.querySelector('[data-cd="m"]');
+    const elS = cd.querySelector('[data-cd="s"]');
+    function pad(n) { return n < 10 ? "0" + n : "" + n; }
+    function tick() {
+      const diff = Math.max(0, target - Date.now());
+      const s = Math.floor(diff / 1000);
+      const d = Math.floor(s / 86400);
+      const h = Math.floor((s % 86400) / 3600);
+      const m = Math.floor((s % 3600) / 60);
+      const sec = s % 60;
+      if (elD) elD.textContent = pad(d);
+      if (elH) elH.textContent = pad(h);
+      if (elM) elM.textContent = pad(m);
+      if (elS) elS.textContent = pad(sec);
     }
-
-    function start() {
-      init();
-      cancelAnimationFrame(raf);
-      draw();
-    }
-
-    start();
-    let to;
-    window.addEventListener("resize", () => {
-      clearTimeout(to);
-      to = setTimeout(start, 150);
-    });
-
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) cancelAnimationFrame(raf);
-      else draw();
-    });
+    tick();
+    setInterval(tick, 1000);
   })();
 </script>
