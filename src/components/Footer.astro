@@ -1,0 +1,28 @@
+---
+import FaroSvg from "./FaroSvg.astro";
+---
+<footer
+  class="relative"
+  style="background: var(--navy); border-top: 0.5px solid var(--border); padding: 56px 64px;"
+>
+  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 text-center lg:text-left">
+    <div class="flex items-center gap-4">
+      <FaroSvg size={36} rays={false} class="opacity-80" />
+      <div>
+        <div class="nav-brand" style="font-size: 12px;">QARYBE <span class="gold">SUMMIT</span> 2026</div>
+      </div>
+    </div>
+
+    <p
+      style="font-family: var(--font-sans); font-size: 9px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: var(--hint);"
+    >
+      Organizado por <span style="color: var(--muted);">Shepwashi</span> &amp; <span style="color: var(--muted);">Luntriqa</span>
+    </p>
+
+    <p
+      style="font-family: var(--font-sans); font-size: 9px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; color: var(--hint);"
+    >
+      Cartagena · Septiembre 2026 · By Invitation Only
+    </p>
+  </div>
+</footer>

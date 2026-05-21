@@ -1,0 +1,277 @@
+---
+import { DIAS, PERFILES } from "../lib/event";
+
+const venueFeatures = [
+  {
+    icon: "lock",
+    title: "Acceso privado",
+    body: "Lista cerrada. Validación de perfil ejecutivo.",
+  },
+  {
+    icon: "people",
+    title: "Networking real",
+    body: "Conversaciones entre pares de alto nivel.",
+  },
+  {
+    icon: "spark",
+    title: "Estrategia sin ruido",
+    body: "Sin patrocinios. Sin distracciones. Solo decisiones.",
+  },
+  {
+    icon: "calendar",
+    title: "24 — 26 Septiembre",
+    body: "Tres días, una sola sala, una sola conversación.",
+  },
+];
+---
+<section id="experiencia" style="background: var(--navy2);">
+  <!-- Bloque A — Venue -->
+  <div class="section-pad relative">
+    <div class="max-w-5xl mx-auto flex flex-col items-center text-center">
+      <p class="eyebrow fade-up" style="margin-bottom: 20px;">The Venue</p>
+
+      <h2
+        class="fade-up"
+        data-d="1"
+        style="font-family: var(--font-display); font-weight: 300; font-size: clamp(46px, 6.5vw, 88px); line-height: 1; color: var(--white); letter-spacing: -1.5px;"
+      >
+        Four Seasons
+      </h2>
+
+      <p class="h-italic-gold fade-up" data-d="2" style="margin-top: 10px;">
+        Cartagena, Colombia
+      </p>
+
+      <div class="divider-v fade-up venue-divider" data-d="2"></div>
+
+      <div class="fade-up w-full max-w-3xl relative overflow-hidden venue-frame" data-d="2" style="aspect-ratio: 21/9; border: 0.5px solid var(--border); margin-bottom: 28px;">
+        <img
+          src="/images/venue.jpg"
+          alt="Four Seasons Cartagena"
+          loading="lazy"
+          decoding="async"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1600ms] ease-out"
+          style="filter: brightness(0.85) contrast(1.05) saturate(0.85);"
+        />
+        <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(180deg, rgba(5,14,26,0.22) 0%, rgba(5,14,26,0.10) 45%, rgba(7,17,31,0.72) 100%);"></div>
+        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, transparent 45%, rgba(5,14,26,0.55) 100%);"></div>
+      </div>
+
+      <p class="body-copy fade-up" data-d="3" style="max-width: 560px;">
+        Un escenario diseñado deliberadamente para conversaciones que no ocurren
+        en los eventos masivos. Exclusivo, privado, exactamente del tamaño correcto
+        para que los líderes correctos se conozcan.
+      </p>
+
+      <!-- 2x2 feature grid replacing the boxed bullets -->
+      <div class="venue-grid fade-up" data-d="3">
+        {venueFeatures.map((f, i) => (
+          <div class="venue-item fade-up" data-d={String(Math.min(4, i + 1))}>
+            <div class="venue-icon" aria-hidden="true">
+              {f.icon === "lock" && (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              )}
+              {f.icon === "people" && (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M2 19c0-3 2.5-5 6-5s6 2 6 5"/><path d="M14 18c0-2 2-3.5 4.5-3.5S22 16 22 18"/></svg>
+              )}
+              {f.icon === "spark" && (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M5.6 18.4l2-2M16.4 7.6l2-2"/><circle cx="12" cy="12" r="2.5"/></svg>
+              )}
+              {f.icon === "calendar" && (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+              )}
+            </div>
+            <div class="venue-item-content">
+              <h3 class="venue-item-title">{f.title}</h3>
+              <p class="venue-item-body">{f.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="divider-h"></div>
+
+  <!-- Bloque B — Agenda -->
+  <div class="section-pad-tight relative">
+    <div class="max-w-6xl mx-auto text-center">
+      <p class="eyebrow fade-up" style="margin-bottom: 10px;">3 Días · Una experiencia</p>
+      <h2 class="h-section fade-up" data-d="1" style="margin-bottom: 44px;">
+        La agenda
+      </h2>
+
+      <div class="agenda-grid">
+        {DIAS.map((d, i) => (
+          <article class="dia fade-up" data-d={String(Math.min(3, i + 1))}>
+            <div class="dia-head">
+              <span class="deco-num dia-num">{d.n}</span>
+              <p class="eyebrow dia-label">{d.label}</p>
+            </div>
+            <h3 class="dia-title">{d.title}</h3>
+            <p class="card-body dia-body">{d.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="divider-h"></div>
+
+  <!-- Bloque C — Para quién -->
+  <div class="section-pad relative">
+    <div class="grid lg:grid-cols-5 gap-10 lg:gap-16 max-w-6xl mx-auto">
+      <div class="fade-up lg:col-span-2 lg:pr-8 lg:border-r lg:border-[color:var(--border)]">
+        <p class="eyebrow" style="margin-bottom: 22px;">Para quién es</p>
+        <h2 class="h-section" style="max-width: 360px;">
+          Para líderes que ya decidieron actuar.
+        </h2>
+        <p class="body-copy" style="max-width: 340px; margin-top: 22px;">
+          Hay líderes que todavía evalúan si la inteligencia artificial es relevante
+          para su empresa. Qarybe Summit 2026 no es para ellos. Es para los que ya
+          saben que el tiempo corre — y necesitan el espacio, las conversaciones
+          y los referentes correctos para ejecutar.
+        </p>
+      </div>
+
+      <div class="lg:col-span-3">
+        {PERFILES.map((p, i, arr) => (
+          <article
+            class="fade-up perfil-row"
+            data-d={String(Math.min(4, i + 1))}
+            style={`padding: 26px 0; ${i < arr.length - 1 ? "border-bottom: 0.5px solid var(--border);" : ""}`}
+          >
+            <div class="flex items-center gap-4 mb-2.5">
+              <span class="block w-6 h-px bg-[color:var(--gold)]"></span>
+              <h3 style="font-family: var(--font-sans); font-size: 9px; font-weight: 500; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin: 0;">{p.title}</h3>
+            </div>
+            <p class="body-copy" style="font-size: 12.5px; line-height: 1.85;">{p.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .venue-divider {
+    margin: 22px auto 24px;
+  }
+  @media (max-width: 768px) {
+    .venue-divider { margin: 18px auto 18px; height: 36px; }
+  }
+
+  .agenda-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: 0.5px solid var(--border);
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .dia {
+    padding: 40px 32px;
+    border-right: 0.5px solid var(--border);
+  }
+  .dia:last-child { border-right: none; }
+
+  .dia-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .dia-num   { font-size: clamp(34px, 4vw, 48px); line-height: 1; }
+  .dia-label { margin: 0; }
+  .dia-title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 22px;
+    color: var(--white);
+    margin: 0 0 12px 0;
+    letter-spacing: -0.5px;
+  }
+  .dia-body { margin: 0; }
+
+  @media (max-width: 768px) {
+    .agenda-grid {
+      grid-template-columns: 1fr;
+      max-width: 520px;
+    }
+    .dia {
+      padding: 22px 22px;
+      border-right: none;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .dia:last-child { border-bottom: none; }
+    .dia-num   { font-size: 34px; }
+    .dia-title { font-size: 20px; margin-bottom: 8px; }
+    .dia-head  { margin-bottom: 10px; gap: 12px; }
+  }
+
+  .venue-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+    width: 100%;
+    max-width: 720px;
+    margin: 40px auto 0;
+  }
+  @media (max-width: 640px) {
+    .venue-grid { grid-template-columns: 1fr; }
+  }
+
+  .venue-item {
+    background: var(--navy2);
+    display: flex;
+    gap: 16px;
+    padding: 24px 22px;
+    text-align: left;
+    transition: background 0.5s ease;
+  }
+  @media (max-width: 640px) {
+    .venue-item { padding: 20px 18px; gap: 14px; }
+  }
+  .venue-item:hover { background: rgba(201, 168, 76, 0.045); }
+
+  .venue-icon {
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5px solid var(--border);
+    color: var(--gold);
+    transition: border-color 0.5s ease, color 0.5s ease;
+  }
+  .venue-item:hover .venue-icon {
+    border-color: rgba(201, 168, 76, 0.55);
+    color: var(--gold2);
+  }
+
+  .venue-item-content { flex: 1; min-width: 0; }
+
+  .venue-item-title {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin: 0 0 8px 0;
+  }
+
+  .venue-item-body {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .venue-frame:hover img { transform: scale(1.03); }
+</style>

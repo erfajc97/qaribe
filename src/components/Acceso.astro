@@ -1,0 +1,81 @@
+---
+import { FOCUS_AREAS } from "../lib/event";
+---
+<section
+  id="acceso"
+  class="section-pad relative"
+  style="background: var(--navy3);"
+>
+  <div class="max-w-3xl mx-auto text-center flex flex-col items-center">
+    <p
+      class="h-italic-gold fade-up"
+      style="font-size: clamp(20px, 2.5vw, 28px); margin-bottom: 36px; max-width: 620px;"
+    >
+      Las conversaciones ya empezaron.<br />
+      La pregunta es si estarás en la sala.
+    </p>
+
+    <p class="eyebrow fade-up" data-d="1" style="margin-bottom: 18px;">Acceso</p>
+
+    <h2 class="fade-up" data-d="1" style="font-family: var(--font-display); font-weight: 300; font-size: clamp(36px, 4.5vw, 60px); line-height: 1.1; color: var(--white); letter-spacing: -1px; max-width: 540px;">
+      Solicita tu<br />invitación privada
+    </h2>
+
+    <p class="body-copy fade-up" data-d="2" style="max-width: 480px; margin-top: 22px; margin-bottom: 36px;">
+      Qarybe Summit 2026 es una experiencia privada organizada por Shepwashi
+      y Luntriqa. Completa tus datos para que el equipo revise tu perfil y
+      confirme disponibilidad de cupo.
+    </p>
+
+    <form
+      class="form-wrap fade-up w-full"
+      data-d="3"
+      id="qarybe-form"
+      action="#"
+      method="post"
+      novalidate
+    >
+      <div class="form-row">
+        <input type="text" name="nombre"   placeholder="Nombre"   required autocomplete="given-name" />
+        <input type="text" name="apellido" placeholder="Apellido" required autocomplete="family-name" />
+      </div>
+      <input type="email" name="email" placeholder="Correo electrónico" required autocomplete="email" />
+      <div class="form-row">
+        <input type="text" name="cargo"   placeholder="Cargo / Posición" required />
+        <input type="text" name="empresa" placeholder="Empresa"          required autocomplete="organization" />
+      </div>
+      <input type="text" name="pais" placeholder="País" required autocomplete="country-name" />
+      <select name="focus" required defaultValue="">
+        <option value="" disabled selected>Área de enfoque</option>
+        {FOCUS_AREAS.map((f) => <option value={f}>{f}</option>)}
+      </select>
+      <button type="submit" class="form-submit" id="qarybe-submit">
+        Solicitar una Introducción
+      </button>
+    </form>
+
+    <p class="microcopy fade-up" data-d="4" style="margin-top: 24px; max-width: 460px;">
+      La solicitud no garantiza el acceso.<br />
+      Cada perfil será revisado por el equipo organizador.
+    </p>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    const form = document.getElementById("qarybe-form");
+    const btn  = document.getElementById("qarybe-submit");
+    if (!form || !btn) return;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (btn.disabled) return;
+
+      // TODO: wire to Make / n8n endpoint
+      btn.textContent = "Solicitud enviada ✓";
+      btn.disabled = true;
+      btn.style.opacity = "0.6";
+      btn.style.cursor = "default";
+    });
+  })();
+</script>
