@@ -5,22 +5,22 @@ const venueFeatures = [
   {
     icon: "lock",
     title: "Acceso privado",
-    body: "Lista cerrada. Validación de perfil ejecutivo.",
+    body: "Lista cerrada.",
   },
   {
-    icon: "people",
-    title: "Conversaciones reales",
-    body: "Un grupo selecto de líderes que comparten el mismo nivel de decisión.",
+    icon: "door",
+    title: "A puerta cerrada",
+    body: "Lo que se presenta aquí no se repite afuera.",
   },
   {
     icon: "spark",
     title: "Estrategia sin ruido",
-    body: "Sin patrocinios. Sin distracciones. Solo decisiones.",
+    body: "Sin patrocinios, sin distracciones.",
   },
   {
     icon: "calendar",
     title: "24 — 26 Septiembre",
-    body: "Tres días, una sola sala, una sola conversación.",
+    body: "Tres días, una sola vez.",
   },
 ];
 ---
@@ -57,10 +57,10 @@ const venueFeatures = [
         <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, transparent 58%, rgba(5,14,26,0.42) 100%);"></div>
       </div>
 
-      <p class="body-copy fade-up" data-d="3" style="max-width: 560px;">
-        Un escenario diseñado deliberadamente para conversaciones que no ocurren
-        en los eventos masivos. Exclusivo, privado, exactamente del tamaño correcto
-        para que los líderes correctos se conozcan.
+      <p class="body-copy fade-up" data-d="3" style="max-width: 580px;">
+        Por miles de años, esta bahía ha visto pasar la riqueza del mundo.
+        El mismo lugar, ahora a puerta cerrada — privado, sin ruido, lejos
+        de todo lo demás.
       </p>
 
       <!-- 2x2 feature grid replacing the boxed bullets -->
@@ -71,8 +71,8 @@ const venueFeatures = [
               {f.icon === "lock" && (
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
               )}
-              {f.icon === "people" && (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M2 19c0-3 2.5-5 6-5s6 2 6 5"/><path d="M14 18c0-2 2-3.5 4.5-3.5S22 16 22 18"/></svg>
+              {f.icon === "door" && (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v18"/><path d="M3 22h18"/><circle cx="15" cy="12" r="0.8" fill="currentColor"/></svg>
               )}
               {f.icon === "spark" && (
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M5.6 18.4l2-2M16.4 7.6l2-2"/><circle cx="12" cy="12" r="2.5"/></svg>
@@ -89,14 +89,14 @@ const venueFeatures = [
         ))}
       </div>
 
-      <!-- Todo incluido -->
+      <!-- Lo que cubre Qarybe -->
       <div class="all-inclusive fade-up" data-d="4">
         <span class="all-inclusive-icon" aria-hidden="true">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
         </span>
         <p class="all-inclusive-text">
-          <span class="ai-label">Todo incluido</span>
-          <span class="ai-body">Hospedaje, gastronomía y actividades durante los tres días en el Four Seasons Cartagena.</span>
+          <span class="ai-label">Tú llegas a Cartagena</span>
+          <span class="ai-body">Hospedaje, alimentación y traslados desde el aeropuerto, cubiertos. Los vuelos no se incluyen.</span>
         </p>
       </div>
     </div>
@@ -150,13 +150,12 @@ const venueFeatures = [
           <article
             class="fade-up perfil-row"
             data-d={String(Math.min(4, i + 1))}
-            style={`padding: 26px 0; ${i < arr.length - 1 ? "border-bottom: 0.5px solid var(--border);" : ""}`}
+            style={`padding: 22px 0; ${i < arr.length - 1 ? "border-bottom: 0.5px solid var(--border);" : ""}`}
           >
-            <div class="flex items-center gap-4 mb-2.5">
+            <div class="flex items-center gap-4">
               <span class="block w-6 h-px bg-[color:var(--gold)]"></span>
-              <h3 style="font-family: var(--font-sans); font-size: 9px; font-weight: 500; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin: 0;">{p.title}</h3>
+              <h3 style="font-family: var(--font-display); font-weight: 300; font-size: clamp(18px, 1.9vw, 22px); color: var(--white); margin: 0; letter-spacing: -0.3px;">{p.title}</h3>
             </div>
-            <p class="body-copy" style="font-size: 12.5px; line-height: 1.85;">{p.body}</p>
           </article>
         ))}
       </div>

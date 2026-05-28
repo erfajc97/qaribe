@@ -1,35 +1,61 @@
 ---
+import { ORIGEN } from "../lib/event";
 ---
 <section
-  id="propuesta"
+  id="origen"
   class="section-pad relative"
   style="background: var(--navy2);"
 >
   <div class="max-w-3xl mx-auto text-center flex flex-col items-center">
-    <p class="eyebrow fade-up" style="margin-bottom: 24px;">
-      Hay conversaciones que no ocurren en público
-    </p>
+    <p class="eyebrow fade-up" style="margin-bottom: 22px;">{ORIGEN.eyebrow}</p>
 
     <h2 class="h-section fade-up" data-d="1" style="max-width: 720px;">
-      La IA no se improvisa.<br />
-      Se diseña con estrategia.
+      {ORIGEN.title}
     </h2>
 
-    <p
-      class="body-copy fade-up"
-      data-d="2"
-      style="max-width: 560px; margin-top: 26px;"
-    >
-      Las empresas que van a liderar la próxima década en América Latina no son
-      las que hablan de tecnología. Son las que ya la están implementando.
-      La pregunta es en cuál grupo está la tuya.
+    {ORIGEN.paragraphs.map((p, i) => (
+      <p class="body-copy fade-up" data-d={String(Math.min(3, i + 2))} style="max-width: 600px; margin-top: 22px;">
+        {p}
+      </p>
+    ))}
+
+    <p class="h-italic-gold fade-up" data-d="3" style="max-width: 620px; margin-top: 28px;">
+      {ORIGEN.highlight}
     </p>
 
-    <div class="divider-v fade-up" data-d="3" style="margin-top: 32px; margin-bottom: 24px;"></div>
+    <div class="divider-v fade-up" data-d="3" style="margin-top: 36px; margin-bottom: 28px;"></div>
 
-    <p class="h-italic-gold fade-up" data-d="3" style="max-width: 620px;">
-      Una ciudad. Un hotel icónico.<br />
-      Una sala con líderes que toman decisiones.
-    </p>
+    <div class="fade-up origen-support" data-d="3">
+      <span class="origen-support-label">{ORIGEN.support.label}</span>
+      <p class="origen-support-body">{ORIGEN.support.body}</p>
+    </div>
   </div>
 </section>
+
+<style>
+  .origen-support {
+    max-width: 600px;
+    padding: 22px 28px;
+    border: 0.5px solid var(--border);
+    background: rgba(5, 14, 26, 0.55);
+    backdrop-filter: blur(6px);
+  }
+  .origen-support-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .origen-support-body {
+    font-family: var(--font-sans);
+    font-size: 12.5px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--white);
+    margin: 0;
+  }
+</style>

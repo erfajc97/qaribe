@@ -1,21 +1,13 @@
 ---
 import { CREDENCIALES } from "../lib/event";
-const { title, subtitle, body, cards } = CREDENCIALES;
+const { eyebrow, title, cards } = CREDENCIALES;
 ---
 <section id="credenciales" class="section-pad relative" style="background: var(--navy);">
   <div class="max-w-6xl mx-auto">
     <div class="text-center flex flex-col items-center" style="margin-bottom: 56px;">
-      <p class="eyebrow fade-up" style="margin-bottom: 22px;">Quién organiza</p>
+      <p class="eyebrow fade-up" style="margin-bottom: 22px;">{eyebrow}</p>
 
-      <h2 class="h-section fade-up" data-d="1">{title}</h2>
-
-      <p class="h-italic-gold fade-up" data-d="2" style="max-width: 620px; margin-top: 14px;">
-        {subtitle}
-      </p>
-
-      <p class="body-copy fade-up" data-d="3" style="max-width: 600px; margin-top: 26px;">
-        {body}
-      </p>
+      <h2 class="h-section fade-up" data-d="1" style="max-width: 620px;">{title}</h2>
     </div>
 
     <div class="cred-grid">

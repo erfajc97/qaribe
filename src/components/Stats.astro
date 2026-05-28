@@ -1,133 +1,22 @@
 ---
-import { STATS } from "../lib/event";
+import { MOMENTO } from "../lib/event";
 ---
-<section id="contexto" class="section-pad relative" style="background: var(--navy3);">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center fade-up" style="margin-bottom: 56px;">
-      <p class="eyebrow" style="margin-bottom: 18px;">El momento</p>
-      <h2 class="h-section" style="max-width: 640px; margin: 0 auto;">
-        Los números que explican por qué esta conversación
-        <span class="h-italic-gold" style="display: inline;">ocurre ahora.</span>
-      </h2>
-    </div>
+<section
+  id="momento"
+  class="section-pad relative"
+  style="background: var(--navy3);"
+>
+  <div class="max-w-3xl mx-auto text-center flex flex-col items-center">
+    <p class="eyebrow fade-up" style="margin-bottom: 22px;">{MOMENTO.eyebrow}</p>
 
-    <div class="stats-grid">
-      {STATS.map((s, i) => (
-        <article class="stat fade-up" data-d={String(Math.min(3, i + 1))}>
-          <div class="stat-head">
-            <span class="stat-icon" aria-hidden="true">
-              {s.icon === "chip" && (
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="7" y="7" width="10" height="10" rx="1.5"/>
-                  <path d="M10 11.5h4M10 14h4"/>
-                  <path d="M9.5 3v4M14.5 3v4M9.5 17v4M14.5 17v4M3 9.5h4M3 14.5h4M17 9.5h4M17 14.5h4"/>
-                </svg>
-              )}
-              {s.icon === "trend" && (
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 17.5l6.5-6.5 4 4 7.5-7.5"/>
-                  <path d="M15 7.5h6v6"/>
-                </svg>
-              )}
-              {s.icon === "diamond" && (
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M6 3.5h12l3.2 5.6L12 21 2.8 9.1z"/>
-                  <path d="M2.8 9.1h18.4M9 3.5l3 17.5M15 3.5l-3 17.5"/>
-                </svg>
-              )}
-            </span>
-            <span class="stat-value">{s.value}</span>
-          </div>
-          <span class="stat-rule" aria-hidden="true"></span>
-          <p class="stat-body">{s.body}</p>
-        </article>
-      ))}
-    </div>
+    <h2 class="h-section fade-up" data-d="1" style="max-width: 720px;">
+      {MOMENTO.title}
+    </h2>
+
+    {MOMENTO.body.map((p, i) => (
+      <p class="body-copy fade-up" data-d={String(Math.min(3, i + 2))} style="max-width: 620px; margin-top: 24px;">
+        {p}
+      </p>
+    ))}
   </div>
 </section>
-
-<style>
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    border: 0.5px solid var(--border);
-  }
-  .stat {
-    padding: 48px 40px;
-    border-right: 0.5px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    transition: background 0.5s ease;
-  }
-  .stat:last-child { border-right: none; }
-  .stat:hover { background: rgba(201, 168, 76, 0.04); }
-
-  .stat-head {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-  }
-
-  .stat-icon {
-    width: 56px;
-    height: 56px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 0.5px solid var(--border);
-    color: var(--gold);
-    flex: 0 0 auto;
-    transition: border-color 0.5s ease, color 0.5s ease, background 0.5s ease;
-  }
-  .stat:hover .stat-icon {
-    border-color: rgba(201, 168, 76, 0.55);
-    color: var(--gold2);
-    background: rgba(201, 168, 76, 0.05);
-  }
-
-  .stat-value {
-    font-family: var(--font-display);
-    font-weight: 300;
-    font-size: clamp(56px, 7vw, 92px);
-    line-height: 1;
-    color: var(--gold);
-    letter-spacing: -2px;
-  }
-  .stat-rule {
-    width: 36px;
-    height: 1px;
-    background: var(--gold);
-    margin: 22px 0;
-    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .stat:hover .stat-rule { width: 60px; }
-
-  .stat-body {
-    font-family: var(--font-sans);
-    font-size: 12.5px;
-    font-weight: 300;
-    line-height: 1.9;
-    color: var(--muted);
-    margin: 0;
-  }
-
-  @media (max-width: 860px) {
-    .stats-grid { grid-template-columns: 1fr; }
-    .stat {
-      padding: 32px 28px;
-      border-right: none;
-      border-bottom: 0.5px solid var(--border);
-    }
-    .stat:last-child { border-bottom: none; }
-    /* icon beside the number on mobile */
-    .stat-head {
-      flex-direction: row;
-      align-items: center;
-      gap: 18px;
-    }
-    .stat-icon { width: 52px; height: 52px; }
-    .stat-rule { margin: 18px 0; }
-  }
-</style>

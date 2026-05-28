@@ -8,6 +8,8 @@ export const SITE = {
 export const EVENT = {
   brand: "QARYBE",
   brandSuffix: "SUMMIT",
+  pronunciation: "/ka·ri·be/",
+  tagline: "10,000 years in the making.",
   year: "2026",
   startDate: "2026-09-24",
   endDate: "2026-09-26",
@@ -24,69 +26,88 @@ export const NAV_LINKS = [
   { href: "#acceso",      label: "Acceso" },
 ];
 
+// ── 02 · Origen ─────────────────────────────────────────────
+export const ORIGEN = {
+  eyebrow: "Origen",
+  title: "Hace miles de años",
+  paragraphs: [
+    "Los Karib ya cruzaban estas aguas. Navegantes, comerciantes, pioneros — le dieron su nombre a todo un mar. El Caribe se llama Caribe por ellos.",
+    "Durante siglos, todo lo que movía al mundo pasó por aquí: rutas, riqueza, ideas, imperios. Siempre fue el lugar por donde la historia tenía que pasar.",
+    "Qarybe toma ese nombre y lo devuelve a su origen. El primer encuentro de su clase en América Latina y el Caribe — por invitación — donde los invitados serán expuestos al futuro de la tecnología y la IA en nuestro hemisferio.",
+  ],
+  highlight: "El mismo cruce de caminos. Diez mil años después.",
+  support: {
+    label: "Beneficios",
+    body: "2 noches · el icónico Four Seasons Cartagena · hospedaje, alimentación y traslados dentro de Cartagena, cubiertos. Tu misión es llegar.",
+  },
+};
+
+// ── 03 · El momento ─────────────────────────────────────────
+export const MOMENTO = {
+  eyebrow: "El momento",
+  title: "El futuro de la región se está escribiendo ahora.",
+  body: [
+    "Tecnología que cambia cada mes. Economías sin libreto. Inestabilidad política e institucional que redibuja el terreno. Una región que redefine sus reglas. Las decisiones que van a marcar la próxima década se toman ahora — y no admiten ensayo.",
+    "Qarybe existe para tomarlas junto a quienes ya entienden hacia dónde va todo.",
+  ],
+};
+
+// ── 04 · Cuatro pilares ─────────────────────────────────────
 export const PILARES = [
   {
     n: "I",
     title: "Inteligencia Artificial",
-    body: "Cómo implementarla en ventas, operación, servicio y toma de decisiones — con casos reales de la región.",
+    body: "Implementación con contexto profundo de mercado, riesgos y volatilidad. Estrategia respaldada por quienes estudiaron el terreno, no por quienes se subieron a la ola.",
   },
   {
     n: "II",
-    title: "Insurtech",
-    body: "Tecnología que está cambiando las reglas del sector asegurador: procesos modernos, flujos automatizados y clientes mejor atendidos.",
+    title: "Construcción Personalizada",
+    body: "Software hecho para tu organización, con tecnología de punta.",
   },
   {
     n: "III",
-    title: "Innovación Tecnológica",
-    body: "Herramientas, plataformas e integraciones para las empresas que decidieron escalar en serio.",
+    title: "Insurtech",
+    body: "El sector asegurador reescrito: procesos modernos, flujos automatizados.",
   },
   {
     n: "IV",
-    title: "Desarrollo a Medida",
-    body: "Soluciones construidas para lo que tu empresa necesita — no plantillas para el mercado general.",
+    title: "El futuro de la región",
+    body: "Hacia dónde va LatAm y el Caribe, y cómo posicionarse antes que el resto.",
   },
 ];
 
+// ── 06 · Agenda ─────────────────────────────────────────────
 export const DIAS = [
   {
     n: "01",
     label: "Día 1",
     title: "Bienvenida",
-    body: "Llegada, registro y apertura oficial. Cena de conexión. Las conversaciones empiezan antes de la primera sesión.",
+    body: "Llegada, registro y apertura. La primera muestra de lo que viene.",
   },
   {
     n: "02",
     label: "Día 2",
     title: "Cumbre Ejecutiva",
-    body: "Contenido estratégico liderado por Shepwashi y Luntriqa. Conversaciones privadas y conexiones estratégicas de alto nivel sobre inteligencia artificial, Insurtech e innovación.",
+    body: "Contenido de Shepwashi y Luntriqa. IA, desarrollo a medida e Insurtech. A puerta cerrada.",
   },
   {
     n: "03",
     label: "Día 3",
     title: "Experiencia",
-    body: "Actividad privada, cierre de conexiones. El final de la experiencia — y el inicio de lo que viene.",
+    body: "Actividad privada y cierre. El inicio de lo que viene.",
   },
 ];
 
+// ── 07 · Para quién ─────────────────────────────────────────
 export const PERFILES = [
-  {
-    title: "CEOs y Presidentes",
-    body: "Los que tienen que decidir hacia dónde va la empresa antes de que el mercado decida por ellos.",
-  },
-  {
-    title: "Fundadores y Propietarios",
-    body: "Los que construyeron su negocio y ahora necesitan tecnología que lo escale sin destruir lo que funciona.",
-  },
-  {
-    title: "Líderes Comerciales y de Operación",
-    body: "Los que saben que sus procesos tienen un techo — y quieren romperlo con las herramientas correctas.",
-  },
-  {
-    title: "Equipos de Tecnología e Innovación",
-    body: "Los que ejecutan, pero necesitan dirección estratégica y referentes reales para ir más rápido.",
-  },
+  { title: "Inversionistas e inversionistas institucionales" },
+  { title: "Funcionarios y oficiales de gobierno" },
+  { title: "CEOs y Presidentes" },
+  { title: "Fundadores y propietarios" },
+  { title: "CTOs y líderes de tecnología" },
 ];
 
+// ── 10 · Acceso · formulario ────────────────────────────────
 export const FOCUS_AREAS = [
   "Inteligencia Artificial",
   "Insurtech",
@@ -102,29 +123,10 @@ export const FOCUS_AREAS = [
 // Vacío = modo demo (muestra confirmación sin enviar).
 export const FORM_ENDPOINT = "";
 
-export const STATS = [
-  {
-    icon: "chip",
-    value: "78%",
-    body: "de ejecutivos de seguros en LatAm no tienen una estrategia clara de IA — en una industria que la IA va a reestructurar completamente en la próxima década.",
-  },
-  {
-    icon: "trend",
-    value: "5×",
-    body: "la ventaja de rendimiento de aseguradoras con IA vs. operadores tradicionales en mercados emergentes.",
-  },
-  {
-    icon: "diamond",
-    value: "$2.4T",
-    body: "valor proyectado de la IA en América Latina y el Caribe para 2035. La mayoría fluirá a organizaciones ya posicionadas hoy.",
-  },
-];
-
+// ── 08 · Quién organiza (simplificado) ──────────────────────
 export const CREDENCIALES = {
-  title: "¿Por qué Shepwashi?",
-  subtitle:
-    "La firma con más conocimiento en AI, InsurTech y tecnología para América Latina y el Caribe.",
-  body: "Qarybe Summit no es organizado por una agencia de eventos. Es organizado por la firma que ha pasado más de 65 años construyendo y transformando el sector asegurador de la región — respaldada por un equipo de expertos en inteligencia artificial con pedigree académico avanzado y un equipo completo de desarrolladores que construye e implementa soluciones reales.",
+  eyebrow: "Quién organiza",
+  title: "Organizado por Shepwashi.",
   cards: [
     {
       n: "I",
@@ -141,5 +143,15 @@ export const CREDENCIALES = {
       title: "Construimos e implementamos",
       body: "No solo asesoramos. Tenemos un equipo completo de desarrollo que construye soluciones a la medida de cada organización.",
     },
+  ],
+};
+
+// ── 11 · Grand finale ───────────────────────────────────────
+export const GRAND_FINALE = {
+  eyebrow: "Grand finale",
+  title: "Grand finale.",
+  body: [
+    "En Qarybe los invitados no solo verán el futuro. Serán los primeros en presenciar — y usar — una tecnología de su clase única, aplicable a cualquier industria, desde seguros hasta hospitalidad.",
+    "Los primeros en interactuar. Los primeros en invertir, si así lo deciden. El resto del mundo, después.",
   ],
 };

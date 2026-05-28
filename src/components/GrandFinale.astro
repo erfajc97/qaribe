@@ -1,0 +1,58 @@
+---
+import { GRAND_FINALE } from "../lib/event";
+---
+<section
+  id="grand-finale"
+  class="section-pad relative"
+  style="background: var(--navy);"
+>
+  <div class="gf-wrap max-w-3xl mx-auto text-center flex flex-col items-center">
+    <p class="eyebrow fade-up" style="margin-bottom: 22px;">{GRAND_FINALE.eyebrow}</p>
+
+    <h2 class="fade-up gf-title" data-d="1">
+      {GRAND_FINALE.title}
+    </h2>
+
+    <div class="gf-divider fade-up" data-d="2" aria-hidden="true"></div>
+
+    {GRAND_FINALE.body.map((p, i) => (
+      <p class="body-copy fade-up gf-body" data-d={String(Math.min(3, i + 2))}>
+        {p}
+      </p>
+    ))}
+  </div>
+</section>
+
+<style>
+  .gf-title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(44px, 6vw, 76px);
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: -1.5px;
+    max-width: 720px;
+  }
+  .gf-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 26px auto 0;
+  }
+  .gf-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(201, 168, 76, 0.4);
+    margin: 28px auto 18px;
+  }
+  .gf-body {
+    max-width: 620px;
+    margin-top: 22px;
+  }
+  .gf-body:first-of-type {
+    margin-top: 12px;
+  }
+</style>

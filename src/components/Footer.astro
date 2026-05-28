@@ -3,9 +3,9 @@ import FaroSvg from "./FaroSvg.astro";
 ---
 <footer
   class="relative"
-  style="background: var(--navy); border-top: 0.5px solid var(--border); padding: 56px 64px;"
+  style="background: var(--navy); border-top: 0.5px solid var(--border); padding: 56px 64px 44px;"
 >
-  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 text-center lg:text-left">
+  <div class="max-w-7xl mx-auto flex flex-col items-center gap-10 text-center">
     <div class="flex items-center gap-4">
       <FaroSvg size={36} rays={false} class="opacity-80" />
       <div>
@@ -13,16 +13,58 @@ import FaroSvg from "./FaroSvg.astro";
       </div>
     </div>
 
-    <p
-      style="font-family: var(--font-sans); font-size: 9px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: var(--hint);"
-    >
-      Organizado por <span style="color: var(--muted);">Shepwashi</span> &amp; <span style="color: var(--muted);">Luntriqa</span>
-    </p>
+    <div class="footer-watermark">
+      <p class="footer-pron">/ka·ri·be/</p>
+      <p class="footer-tag">10,000 years in the making.</p>
+    </div>
 
-    <p
-      style="font-family: var(--font-sans); font-size: 9px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; color: var(--hint);"
-    >
-      Cartagena · Septiembre 2026 · By Invitation Only
-    </p>
+    <div class="footer-meta">
+      <p>Organizado por <span>Shepwashi</span> &amp; <span>Luntriqa</span></p>
+      <span class="footer-sep">·</span>
+      <p>Cartagena · Septiembre 2026 · By Invitation Only</p>
+    </div>
   </div>
 </footer>
+
+<style>
+  .footer-watermark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .footer-pron {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(14px, 1.4vw, 17px);
+    letter-spacing: 4px;
+    color: var(--gold2);
+    margin: 0;
+  }
+  .footer-tag {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(12px, 1.2vw, 14px);
+    letter-spacing: 0.5px;
+    color: rgba(245, 240, 232, 0.55);
+    margin: 0;
+  }
+  .footer-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--hint);
+  }
+  .footer-meta p { margin: 0; }
+  .footer-meta span { color: var(--muted); }
+  .footer-sep { color: rgba(201, 168, 76, 0.4); }
+</style>
